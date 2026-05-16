@@ -2,6 +2,8 @@
 
 ## Publicare site + postare pe Facebook
 
+Nu ai nevoie de domeniu propriu. Poți folosi direct linkul gratuit Netlify (`*.netlify.app`).
+
 1. Publică site-ul pe Netlify și obține URL-ul public.
 2. Verifică URL-ul într-un browser (ideal și în incognito).
 3. Intră pe Facebook (profil sau pagină business) și creează o postare nouă.
@@ -12,6 +14,4 @@
 
 ### Notă Open Graph
 
-Pentru preview corect la share, pagina include metadata Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) și canonical URL.
-
-Dacă folosești alt domeniu decât `https://cleaning-house.netlify.app/`, actualizează în `curatenie_v4_final_check/index.html` valorile pentru `canonical` și `og:url`.
+Pentru preview corect la share, pagina include metadata Open Graph (`og:title`, `og:description`, `og:image`).
