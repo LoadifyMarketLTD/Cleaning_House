@@ -13,3 +13,5 @@
 ### Notă Open Graph
 
 Pentru preview corect la share, pagina include metadata Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) și canonical URL.
+
+Dacă folosești alt domeniu decât `https://cleaning-house.netlify.app/`, actualizează în `curatenie_v4_final_check/index.html` valorile pentru `canonical` și `og:url`.
