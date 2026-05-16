@@ -377,7 +377,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 <option value="TAPIȚERII">TAPIȚERII</option>
 <option value="ABONAMENT LUNAR">ABONAMENT LUNAR</option></select><label for="detalii">Detalii</label><textarea id="detalii" name="detalii" placeholder="Suprafață, număr camere, grad de murdărie, data dorită..." maxlength="500"></textarea><div class="consent"><input id="consent" name="consent" type="checkbox" value="accepted" required><label id="consent-copy" for="consent">Sunt de acord ca datele trimise să fie folosite doar pentru ofertare și programare.</label></div><button class="btn submit" type="submit">Trimite cererea pe WhatsApp</button></form></div></section>
 </main>
-<footer class="footer"><div class="wrap"><div><h2>Tu te relaxezi, noi ne ocupăm.</h2><span>© <span id="year"></span> Curățenie la Domiciliu — Toate drepturile rezervate.</span><div class="footer-links"><a href="#contact">Cerere ofertă</a><a href="https://www.facebook.com/share/1aL5wh2HY1/" target="_blank" rel="noopener noreferrer">Facebook</a><a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener noreferrer">Distribuie pe Facebook</a><a id="share-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Distribuie pe Instagram</a><a id="share-tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">Distribuie pe TikTok</a></div></div><a class="btn" href="https://wa.me/40741011116" target="_blank" rel="noopener noreferrer">Scrie pe WhatsApp</a></div></footer><a class="wa-float" href="https://wa.me/40741011116" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+<footer class="footer"><div class="wrap"><div><h2>Tu te relaxezi, noi ne ocupăm.</h2><span>© <span id="year"></span> Curățenie la Domiciliu — Toate drepturile rezervate.</span><div class="footer-links"><a href="#contact">Cerere ofertă</a><a href="https://www.facebook.com/share/1aL5wh2HY1/" target="_blank" rel="noopener noreferrer">Facebook</a><a id="share-facebook" href="https://www.facebook.com/sharer/sharer.php" target="_blank" rel="noopener noreferrer">Distribuie pe Facebook</a><a id="share-instagram" href="#" rel="noopener noreferrer" aria-label="Distribuie pagina pe Instagram">Distribuie pe Instagram</a><a id="share-tiktok" href="#" rel="noopener noreferrer" aria-label="Distribuie pagina pe TikTok">Distribuie pe TikTok</a></div></div><a class="btn" href="https://wa.me/40741011116" target="_blank" rel="noopener noreferrer">Scrie pe WhatsApp</a></div></footer><a class="wa-float" href="https://wa.me/40741011116" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
 function sendWhatsApp(e) {
@@ -408,14 +408,19 @@ async function sharePage(platform) {
         url: pageUrl
       });
       return;
-    } catch (e) {}
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
+      console.error('Eroare la partajare nativă:', e);
+    }
   }
   if (navigator.clipboard && window.isSecureContext) {
     try {
       await navigator.clipboard.writeText(pageUrl);
       alert('Link copiat. Îl poți lipi direct pe ' + platform + '.');
       return;
-    } catch (e) {}
+    } catch (e) {
+      console.error('Eroare la copierea linkului:', e);
+    }
   }
   window.prompt('Copiază linkul paginii și distribuie-l pe ' + platform + ':', pageUrl);
 }
